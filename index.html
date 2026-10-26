@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yuanheng Zhang</title>
+<meta name="description" content="Yuanheng Zhang is a Ph.D. student in Statistics at the University of California, Riverside, working on generative models for spatio-temporal event data.">
+<meta name="author" content="Yuanheng Zhang">
+<link rel="canonical" href="https://evanzhang100302.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Yuanheng Zhang">
+<meta property="og:description" content="Ph.D. student in Statistics at UC Riverside, working on generative models for spatio-temporal event data.">
+<meta property="og:url" content="https://evanzhang100302.github.io/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FCFDFE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1A31" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213D'/%3E%3Ccircle cx='11' cy='12' r='3.4' fill='%23FFB81C'/%3E%3Ccircle cx='21.5' cy='10' r='2.3' fill='%23FFB81C'/%3E%3Ccircle cx='19' cy='21.5' r='2.9' fill='%23FFB81C'/%3E%3Ccircle cx='9.5' cy='22.5' r='1.7' fill='%23FFB81C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,500&display=swap">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --paper: #FCFDFE;
+    --ink: #14213D;
+    --muted: #56617A;
+    --rule: #DCE3EF;
+    --blue: #003DA5;      /* UCR Blue */
+    --gold: #FFB81C;      /* UCR Gold */
+    --serif: "STIX Two Text", "STIX Two", "Times New Roman", serif;
+    --sans: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0D1A31;
+      --ink: #E7ECF5;
+      --muted: #A6B1C6;
+      --rule: #22324F;
+      --blue: #93B5FF;
+      --gold: #FFC23D;
+    }
+  }
+
+  /* ---------- Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { font-size: 112.5%; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.6;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: color-mix(in srgb, var(--gold) 45%, transparent); }
+  p { margin: 0; }
+  a {
+    color: var(--blue);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+  /* Two-column rhythm: section names hang in a left gutter on wide screens. */
+  main { margin-top: 3.5rem; }
+  .row + .row { margin-top: 3.5rem; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 3.5rem; }
+  .portrait {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    background: var(--rule);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 4.2vw + 1rem, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+  }
+  .role { margin-top: 0.75rem; font-size: 1.1rem; line-height: 1.45; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 1.25rem; }
+  .links a {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .links a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+  /* ---------- Sections ---------- */
+  h2 {
+    margin: 0 0 1rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+  .prose p { max-width: 34em; }
+  .prose p + p { margin-top: 0.9rem; }
+
+  /* Keyed lists: a narrow column on the left holds when / where. */
+  .keyed { list-style: none; margin: 0; padding: 0; }
+  .keyed > li + li { margin-top: 0.85rem; }
+  .keyed.pubs > li + li { margin-top: 1.4rem; }
+  .key {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--muted);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .key:empty { display: none; }
+  .key b { font-weight: 600; color: var(--ink); }
+  .sub { color: var(--muted); }
+
+  .pub-title { font-weight: 600; }
+  .pub-authors { font-size: 0.95rem; }
+  .pub-authors b { font-weight: 600; }
+  .pub-note { margin-top: 0.3rem; font-size: 0.95rem; color: var(--muted); max-width: 38em; }
+  .pub-links { margin-top: 0.3rem; display: flex; gap: 1rem; }
+  .pub-links a { font-family: var(--sans); font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+  .pub-links a:hover { text-decoration: underline; }
+
+  footer { color: var(--muted); font-family: var(--sans); font-size: 0.9rem; }
+  footer.row { margin-top: 4.5rem; }
+
+  /* ---------- Wider screens ---------- */
+  @media (min-width: 34rem) {
+    .keyed > li { display: grid; grid-template-columns: 8.4rem minmax(0, 1fr); column-gap: 1.25rem; }
+    .key:empty { display: block; }
+  }
+  @media (min-width: 62rem) {
+    .row { display: grid; grid-template-columns: 10rem minmax(0, 1fr); column-gap: 2.75rem; }
+    main, .row + .row { margin-top: 4.25rem; }
+    .hero { padding-top: 5rem; align-items: center; }
+    .portrait { width: 100%; height: auto; aspect-ratio: 1; margin: 0; }
+    h2 { margin: 0; position: sticky; top: 1.75rem; align-self: start; padding-top: 0.05rem; }
+  }
+</style>
+</head>
+<body>
+<!--
+  Personal homepage of Yuanheng Zhang.
+  Edit the text directly in this file. Lines marked TODO need your input.
+  To add a photo, upload a square image named profile.jpg next to this file.
+-->
+<div class="page">
+
+  <header class="row hero">
+    <div>
+      <img class="portrait" src="profile.jpg" alt="Portrait of Yuanheng Zhang" width="320" height="320" onerror="this.remove()">
+    </div>
+    <div class="intro">
+      <h1>Yuanheng Zhang</h1>
+      <p class="role">Ph.D. student in Statistics<br>University of California, Riverside</p>
+      <nav class="links" aria-label="Contact and profiles">
+        <a href="mailto:yzhan1242@ucr.edu">Email</a>
+        <a href="https://github.com/Evanzhang100302">GitHub</a>
+        <!-- TODO: uncomment and fill in when ready
+        <a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/YOUR_HANDLE">LinkedIn</a>
+        -->
+        <a href="cv.pdf">CV</a><!-- TODO: upload cv.pdf next to this file -->
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="row" aria-labelledby="about">
+      <h2 id="about">About</h2>
+      <div class="prose">
+        <p>I&rsquo;m a Ph.D. student in Statistics at the University of California, Riverside, advised by <a href="https://sites.google.com/view/ygchen">Prof. Yuzhou Chen</a>. I study generative models for spatio-temporal event data: diffusion-based point processes that draw on satellite imagery and on topological structure from discrete Morse theory, and distillation methods that make these models fast enough to use in practice. Most of my applications are in AI for Earth and public safety, especially wildfire and smoke forecasting from multi-source satellite observations.</p>
+        <p>Before UCR, I earned a Master of Applied Statistics at The Ohio State University and a B.Eng. in Microelectronic Science and Engineering at Xi&rsquo;an Jiaotong University.</p>
+      </div>
+    </section>
+
+    <section class="row" aria-labelledby="news">
+      <h2 id="news">News</h2>
+      <ul class="keyed">
+        <li><span class="key">Dec 2026</span><p>Presenting MCM-DM at NeurIPS 2026.</p></li>
+        <li><span class="key">Nov 2026</span><p>Presenting UMS at ACM SIGSPATIAL 2026, as a poster and a lightning talk.</p></li>
+        <li><span class="key">Sep 2026</span><p>Two papers accepted: MCM-DM at NeurIPS 2026 and UMS at ACM SIGSPATIAL 2026.</p></li>
+        <li><span class="key"></span><p>Started my Ph.D. in Statistics at UC Riverside.</p></li>
+      </ul>
+    </section>
+
+    <section class="row" aria-labelledby="publications">
+      <h2 id="publications">Publications</h2>
+      <ol class="keyed pubs">
+        <li>
+          <span class="key"><b>NeurIPS 2026</b><br>Poster</span>
+          <div>
+            <p class="pub-title">MCM-DM: Towards Better Spatio-Temporal Event Representation Learning via Discrete Morse Theory</p>
+            <p class="pub-authors"><b>Yuanheng Zhang</b>, Chenguang Yang, Jaidev Goel, Jennifer Rozenblit, Yulia R. Gel, Yuzhou Chen</p>
+            <p class="pub-note">A cross-modality diffusion framework for spatio-temporal point processes. It encodes satellite imagery with a vision&ndash;language model and uses discrete Morse theory to align event representations with the topology of the data, evaluated on eight real-world datasets.</p>
+            <!-- TODO: add links when public
+            <p class="pub-links"><a href="#">Paper</a><a href="#">Code</a><a href="#">Poster</a></p>
+            -->
+          </div>
+        </li>
+        <li>
+          <span class="key"><b>SIGSPATIAL 2026</b><br>Poster</span>
+          <div>
+            <p class="pub-title">Uncertainty-aware Multi-modality Spatio-temporal Wildfire and Smoke Prediction</p>
+            <p class="pub-authors"><b>Yuanheng Zhang</b>, Chenguang Yang, Nicholas LaHaye, Huikyo Lee, Yulia R. Gel, Yuzhou Chen</p>
+            <p class="pub-note">UMS predicts wildfire and smoke from multi-source satellite and airborne imagery (GOES-17/18, GK2A, MASTER, eMAS), pairing mutual k-NN graphs with a mixture-of-experts design for uncertainty estimates.</p>
+            <!-- TODO: add links when public
+            <p class="pub-links"><a href="#">Paper</a><a href="#">Code</a></p>
+            -->
+          </div>
+        </li>
+        <li>
+          <span class="key">Under review</span>
+          <div>
+            <p class="pub-title">MorseDistill: Spatio-Temporal Morse-Guided Distillation for Efficient Wildfire Forecasting</p>
+            <p class="pub-authors"><b>Yuanheng Zhang</b>, et al.</p><!-- TODO: full author list -->
+          </div>
+        </li>
+        <li>
+          <span class="key"></span>
+          <div>
+            <p class="pub-title">Distilling Distributions and Topology for Spatio-Temporal Event Forecasting</p>
+            <p class="pub-authors"><b>Yuanheng Zhang</b>, Yuxin Liu, Xuhui Fan, Jennifer Rozenblit, Bin Li, Hang Qiu, Yunfei Hou, Yulia R. Gel, Yuzhou Chen</p>
+          </div>
+        </li>
+        <li>
+          <span class="key"></span>
+          <div>
+            <p class="pub-title">ShiftDistill: Displacement-Guided Knowledge Transfer for Credit Card Fraud Prediction</p>
+            <p class="pub-authors">Yuxin Liu, <b>Yuanheng Zhang</b>, Yulia R. Gel, Yuzhou Chen</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="row" aria-labelledby="education">
+      <h2 id="education">Education</h2>
+      <ul class="keyed">
+        <li><span class="key">2026&ndash;present</span><div><p><b>Ph.D. in Statistics</b>, University of California, Riverside</p><p class="sub">Advisor: Yuzhou Chen</p></div></li>
+        <li><span class="key">2024&ndash;2026</span><p><b>Master of Applied Statistics</b>, The Ohio State University</p></li>
+        <li><span class="key">2020&ndash;2024</span><p><b>B.Eng. in Microelectronic Science and Engineering</b>, Xi&rsquo;an Jiaotong University</p></li>
+      </ul>
+    </section>
+
+    <section class="row" aria-labelledby="teaching">
+      <h2 id="teaching">Teaching</h2>
+      <ul class="keyed">
+        <li><span class="key">2024&ndash;2026</span><div><p><b>Graduate Teaching Associate</b>, Department of Statistics, The Ohio State University</p><p class="sub">STAT 1430 Statistics for Business Sciences; STAT 3450 Basic Statistics for Engineers</p></div></li>
+      </ul>
+    </section>
+
+    <section class="row" aria-labelledby="honors">
+      <h2 id="honors">Honors</h2>
+      <ul class="keyed">
+        <li><span class="key">2026</span><p>NeurIPS 2026 Financial Assistance Award</p></li>
+        <li><span class="key"></span><p>UC Riverside Travel Award</p></li>
+      </ul>
+    </section>
+
+    <section class="row" aria-labelledby="service">
+      <h2 id="service">Service</h2>
+      <ul class="keyed">
+        <li><span class="key">Reviewer</span><p>ICHI 2027</p></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="row">
+    <div></div>
+    <p>Last updated October 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
